@@ -1,3 +1,4 @@
+import Enemy from "./inimigos.js";
 export default class EnemyController{
 
     enemyMap = [
@@ -17,16 +18,22 @@ export default class EnemyController{
     }
     
     draw(ctx){
-        
+        this.drawEnemies(ctx);
     }
+
+    drawEnemies(ctx){
+        this.enemyRows.flat().forEach((enemy) => enemy.draw(ctx)); 
+    }
+
     createEnemies(){
-        this.enemyMap.array.forEach((row,rowIndex) => {
+        this.enemyMap.forEach((row, rowIndex) => {
             this.enemyRows[rowIndex] = [];
-            row.forEach((enemyNumber, enemyIndex) => {
-                if(enemyNumber > 0){
-                    this.enemyRows[rowIndex].push(new Enemy(enemyIndex* 50, rowIndex * 35, enemyNumber))
+             row.forEach((enemyNumber, enemyIndex) => {
+              if (enemyNumber > 0){
+               this.enemyRows[rowIndex].push
+                (new Enemy(enemyIndex* 50, rowIndex * 35, enemyNumber))
                 }
-            })
+            });
         });
 
     }
